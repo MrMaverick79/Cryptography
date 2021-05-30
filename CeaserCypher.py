@@ -29,7 +29,8 @@ def CaesarCypher(message, key):
             code += encodedAlpha[j]
     return code
    
-    
+
+print(CaesarCypher('this is a secret message', 'k'))
 
     
 
