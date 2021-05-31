@@ -22,14 +22,16 @@ Transposition cypher
 
 @author: brendantuckerman
 """
-# TODO
-# Add in word as instead of length. The len of this word is the length
-# Code is then sorted by alpha based on the word
-#  Should make it much harder to crack
+
+def unpack(key):
+    "'Returns the key split into a list"
+    key_list =[]
+    key_list[:0] = key 
+    return key_list
 
 def transpo(message, key):
     "Returns a list of lists based on the \
-    length provided. "
+    length provided.  "
     length = len(key)
     arr = []
     new_l = []
@@ -54,6 +56,13 @@ def transpo(message, key):
             arr.append(new_l)
             new_l = []
             
+    #each list is then reordered based on the alpha of the key
+    split_key = unpack(key) #splits the key into a list
+    # then zip
+    #then sort
+    #then unzip
+    
+    print(arr)
     return arr
 
 
@@ -69,7 +78,7 @@ def encodeTranspo(message, key):
         
         while len(i) < length:
                 i.append(' ')
-        #print(i)
+        #print(i) <--test REMOVE
     
     while j < length:
         for i in range(len(message)):
@@ -80,6 +89,8 @@ def encodeTranspo(message, key):
     # need to sort the key inot alpha...then change each of the lists
     # to do the same
     #split key? enumerate, then sort?
+    
+    
     
     print(encode)
         
