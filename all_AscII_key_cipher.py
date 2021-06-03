@@ -17,12 +17,15 @@ Simple key cipher:
     
     output would be vfwufn
     
+    This version uses all ASCII characters with the string library
+    
 @author: brendantuckerman
 """
+import string
 
 def key_cipher(message, key):
             
-    alpha = 'abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz'
+    alpha = string.printable[:94]*2 #2 sets of all ASCII chars without spaces
     encoded = ''
     message = message.lower() #make all lowercase
     message = message.replace(' ','') #remove spaces
@@ -41,13 +44,10 @@ def key_cipher(message, key):
         
     return encoded
 
-#test
-secret = key_cipher('secret', 'code')
-print(secret)
 
 def key_cipher_decode(message, key):
         
-        alpha = 'abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz'
+        alpha = string.printable[:94]*2
         decoded = ''
         stretch_key = ''
         
@@ -64,5 +64,9 @@ def key_cipher_decode(message, key):
         return decoded
 
 #test  
-unlock = key_cipher_decode(secret, 'code')
+
+key = 'C@DE%s1!z'
+secret = key_cipher('This is a secret message!', key)
+print(secret)
+unlock = key_cipher_decode(secret, key)
 print(unlock)
